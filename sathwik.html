@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sathwik's Watchlist</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top left, #0f2027, #203a43, #2c5364);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      font-size: 2.5em;
+      font-weight: 600;
+      margin-bottom: 30px;
+      letter-spacing: 2px;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #00ffff; }
+      to { text-shadow: 0 0 20px #00ff99, 0 0 30px #00ccff; }
+    }
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+    }
+
+    button {
+      background: linear-gradient(45deg, #00c6ff, #0072ff);
+      border: none;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 0 10px #00ccff;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      background: linear-gradient(45deg, #00ffcc, #0066ff);
+      box-shadow: 0 0 20px #00ffff;
+    }
+
+    .container {
+      margin-top: 40px;
+      width: 90%;
+      max-width: 500px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 15px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+    }
+
+    .list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .list li {
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 8px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .add-movie {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      font-size: 1em;
+    }
+
+    .blink {
+      animation: blink 1.5s infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0.5; }
+    }
+    #bubble1 {
+      position: absolute;
+      top: -100px;
+      left: -100px;
+      width: 200px;
+      height: 200px;
+      background: rgba(0, 255, 55, 0.1);
+      border-radius: 50%;
+      filter: blur(10px);
+      animation: moveBubble 20s linear infinite;
+    }   
+    @keyframes moveBubble {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(100vw, 100vh); }
+    }
+    #bubble2 {
+      position: absolute;
+      top: -150px;
+      right: -150px;
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 0, 255, 0.1);
+      border-radius: 50%;
+      filter: blur(10px);
+      animation: moveBubble2 25s linear infinite;
+    }
+    @keyframes moveBubble2 {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-100vw, 100vh); }
+    }
+    #bubble3 {
+      position: absolute;
+      bottom: -100px;
+      left: -100px;
+      width: 200px;
+      height: 200px;
+      background: rgba(0, 255, 255, 0.1);
+      border-radius: 50%;
+      filter: blur(10px);
+      animation: moveBubble3 22s linear infinite;
+    }
+    @keyframes moveBubble3 {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(100vw, -100vh); }
+    }
+    #bubble4 {
+      position: absolute;
+      bottom: -150px;
+      right: -150px;
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 255, 0, 0.1);
+      border-radius: 50%;
+      filter: blur(10px);
+      animation: moveBubble4 30s linear infinite;
+    }
+    @keyframes moveBubble4 {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-100vw, -100vh); }
+    }
+    #bubble5 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 400px;
+      height: 400px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+      filter: blur(20px);
+      transform: translate(-50%, -50%);
+      animation: pulse 10s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.1); }
+    }
+  </style>
+</head>
+<body>
+  <header>Sathwik’s Watchlist </header>
+  <div id="bubble1"></div>
+  <div id="bubble2"></div>
+  <div id="bubble3"></div>
+  <div id="bubble4"></div>
+  <div id="bubble5"></div>
+  
+  
+
+  <div class="buttons">
+    <button id="watchlistBtn">📺 Watchlist</button>
+    <button id="watchedBtn">✅ Watched</button>
+  </div>
+
+  <div class="container">
+    <ul class="list" id="movieList"></ul>
+
+    <div class="add-movie">
+      <input type="text" id="movieInput" placeholder="Add hear...">
+      <button id="addBtn">Add</button>
+    </div>
+  </div>
+
+  <script>
+  const movieInput = document.getElementById('movieInput');
+  const addBtn = document.getElementById('addBtn');
+  const movieList = document.getElementById('movieList');
+  const watchlistBtn = document.getElementById('watchlistBtn');
+  const watchedBtn = document.getElementById('watchedBtn');
+
+  let watchlist = JSON.parse(localStorage.getItem('watchlist')) || [];
+  let watched = JSON.parse(localStorage.getItem('watched')) || [];
+  let showingWatchlist = true;
+
+  function saveData() {
+    localStorage.setItem('watchlist', JSON.stringify(watchlist));
+    localStorage.setItem('watched', JSON.stringify(watched));
+  }
+
+  function renderList() {
+    movieList.innerHTML = '';
+    const list = showingWatchlist ? watchlist : watched;
+    list.forEach((movie, index) => {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        ${movie}
+        <button onclick="toggleMovie(${index})" class="blink">
+          ${showingWatchlist ? 'Mark Watched ✅' : '↩️ Move Back'}
+        </button>`;
+      movieList.appendChild(li);
+    });
+  }
+
+  function toggleMovie(index) {
+    if (showingWatchlist) {
+      watched.push(watchlist[index]);
+      watchlist.splice(index, 1);
+    } else {
+      watchlist.push(watched[index]);
+      watched.splice(index, 1);
+    }
+    saveData();
+    renderList();
+  }
+
+  addBtn.addEventListener('click', () => {
+    const movie = movieInput.value.trim();
+    if (movie) {
+      watchlist.push(movie);
+      movieInput.value = '';
+      saveData();
+      if (showingWatchlist) renderList();
+    }
+  });
+
+  watchlistBtn.addEventListener('click', () => {
+    showingWatchlist = true;
+    watchlistBtn.style.background = "#00ffcc";
+    watchedBtn.style.background = "#0072ff";
+    renderList();
+  });
+
+  watchedBtn.addEventListener('click', () => {
+    showingWatchlist = false;
+    watchedBtn.style.background = "#00ffcc";
+    watchlistBtn.style.background = "#0072ff";
+    renderList();
+  });
+
+  renderList();
+</script>
+
+</body>
+</html>
